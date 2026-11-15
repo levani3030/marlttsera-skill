@@ -35,6 +35,12 @@ MD_BLOCK = f"""{MARK_START}
 OUR_HOOK = re.compile(r"marlttsera[\\/]scripts[\\/]hooks[\\/]")
 
 
+def write(path: Path, text: str) -> None:
+    # LF ყველა პლატფორმაზე, რომ ჩანაწერი install.mjs-ისას დაემთხვეს
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
+
+
 def fwd(p: Path) -> str:
     return str(p).replace("\\", "/")
 
@@ -77,17 +83,21 @@ def update_settings(install_hooks: bool) -> None:
             {"matcher": "Write|Edit|MultiEdit|NotebookEdit",
              "hooks": [{"type": "command", "command": post, "timeout": 10}]})
     SETTINGS.parent.mkdir(parents=True, exist_ok=True)
-    SETTINGS.write_text(json.dumps(settings, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write(SETTINGS, json.dumps(settings, ensure_ascii=False, indent=2) + "\n")
 
 
 def update_claude_md(add: bool) -> None:
-    md = CLAUDE_MD.read_text(encoding="utf-8") if CLAUDE_MD.exists() else ""
+    md = ""
+    if CLAUDE_MD.exists():
+        # newline="" — მომხმარებლის ფაილის ხაზის დაბოლოებები (CRLF/LF) უცვლელი რჩება
+        with open(CLAUDE_MD, encoding="utf-8", newline="") as f:
+            md = f.read()
     md = re.sub(r"\n*" + re.escape(MARK_START) + r".*?" + re.escape(MARK_END) + r"\n*", "\n", md, flags=re.S)
     md = md.strip()
     if add:
         md = (md + "\n\n" if md else "") + MD_BLOCK
     CLAUDE_MD.parent.mkdir(parents=True, exist_ok=True)
-    CLAUDE_MD.write_text(md + "\n" if md else "", encoding="utf-8")
+    write(CLAUDE_MD, md + "\n" if md else "")
 
 
 def install(hooks: bool) -> None:
