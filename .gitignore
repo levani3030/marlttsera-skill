@@ -1,0 +1,9 @@
+# წყარო PDF-ები (საავტორო უფლებით დაცული წიგნები) — რეპოზიტორიაში არ იტვირთება
+temp/
+
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+Thumbs.db
+*.martltsera-backup
