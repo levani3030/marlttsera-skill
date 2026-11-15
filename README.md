@@ -1,4 +1,4 @@
-# martltsera — ქართული მართლწერის სკილი Claude Code-ისთვის
+# marlttsera — ქართული მართლწერის სკილი Claude Code-ისთვის
 
 სკილი, რომელიც Claude-ს ქართულად გამართულად წერას ასწავლის: სწორი ბრუნვები და შეთანხმება, მართლწერა, რთული სიტყვების დაწერილობა, პუნქტუაცია და ბუნებრივი, არანათარგმნი სტილი. წესები ამოკრებილია ქართული სალიტერატურო ენის ოფიციალური ნორმებიდან.
 
@@ -14,16 +14,16 @@
 ## ინსტალაცია
 
 ```
-git clone https://github.com/<მომხმარებელი>/martltsera.git
-cd martltsera
+git clone https://github.com/<მომხმარებელი>/marlttsera.git
+cd marlttsera
 python install.py              # სკილი + hook-ები + მითითება CLAUDE.md-ში
 python install.py --no-hooks   # hook-ების გარეშე
 python install.py --uninstall  # წაშლა
 ```
 
 ინსტალატორი:
-1. აკოპირებს `martltsera/` საქაღალდეს `~/.claude/skills/martltsera`-ში;
-2. `~/.claude/settings.json`-ში ამატებს ორ hook-ს (არსებულს არ ეხება; ქმნის სარეზერვო ასლს `settings.json.martltsera-backup`);
+1. აკოპირებს `marlttsera/` საქაღალდეს `~/.claude/skills/marlttsera`-ში;
+2. `~/.claude/settings.json`-ში ამატებს ორ hook-ს (არსებულს არ ეხება; ქმნის სარეზერვო ასლს `settings.json.marlttsera-backup`);
 3. `~/.claude/CLAUDE.md`-ში ამატებს მითითებას, რომ ქართული ტექსტის წერამდე სკილი ჩაიტვირთოს.
 
 საჭიროა Python 3.8+ (ინსტალატორისთვის) და Node.js 18+ (შემმოწმებლისა და hook-ებისთვის). სკილში ცვლილების შეტანის შემდეგ ინსტალატორი ხელახლა გაუშვი.
@@ -31,19 +31,19 @@ python install.py --uninstall  # წაშლა
 ## გამოყენება
 
 - ქართულად მისწერე Claude-ს — სკილი თავად ჩაირთვება.
-- `/martltsera შეამოწმე docs/guide.md` — ფაილის კორექტურა.
-- `/martltsera როგორ იწერება: ვებ-გვერდი თუ ვებგვერდი?` — წესის ახსნა.
+- `/marlttsera შეამოწმე docs/guide.md` — ფაილის კორექტურა.
+- `/marlttsera როგორ იწერება: ვებ-გვერდი თუ ვებგვერდი?` — წესის ახსნა.
 - ხელით:
   ```
-  node ~/.claude/skills/martltsera/scripts/lint.mjs ფაილი.md
-  node ~/.claude/skills/martltsera/scripts/lint.mjs --text "ვფიქრობ რომ ეს სპეციფიური შემთხვევაა"
-  node ~/.claude/skills/martltsera/scripts/lookup.mjs ვებ-გვერდი ონლაინ
+  node ~/.claude/skills/marlttsera/scripts/lint.mjs ფაილი.md
+  node ~/.claude/skills/marlttsera/scripts/lint.mjs --text "ვფიქრობ რომ ეს სპეციფიური შემთხვევაა"
+  node ~/.claude/skills/marlttsera/scripts/lookup.mjs ვებ-გვერდი ონლაინ
   ```
 
 ## სტრუქტურა
 
 ```
-martltsera/
+marlttsera/
 ├── SKILL.md                 მთავარი ინსტრუქცია: სამუშაო პროცესი, ყველაზე ხშირი შეცდომები, თვითშემოწმება
 ├── references/
 │   ├── syntax.md            ბრუნვის შერჩევა ზმნის სერიით, შეთანხმება, რომელიც / რაც, თანდებულები
@@ -75,7 +75,7 @@ martltsera/
 - სახელმწიფო ენის დეპარტამენტის ნორმები და შესწორებათა ბაზა (enadep.gov.ge), მთავრობის №394 (2020) და №362 (2025) დადგენილებები;
 - პუნქტუაციის სახელმძღვანელოები (ბასილაია 1966, ზარდალიშვილი 1995, არაბული 2008, ვარდიაშვილი–ზვიადაძე 2009), Unicode CLDR, Microsoft / Mozilla / GNOME / Android-ის ქართული ლოკალიზაციები.
 
-დაწვრილებით — `martltsera/references/sources.md`.
+დაწვრილებით — `marlttsera/references/sources.md`.
 
 ## მოვლა
 

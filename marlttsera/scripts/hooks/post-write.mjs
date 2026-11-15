@@ -20,7 +20,7 @@ try {
   if (Array.isArray(ti.edits)) for (const e of ti.edits) if (typeof e?.new_string === 'string') chunks.push(e.new_string);
   const text = chunks.join('\n');
   // სკილის საკუთარ ფაილებს არ ვამოწმებთ: იქ არასწორი ფორმები განზრახ წერია მაგალითებად.
-  const own = /[\\/]martltsera[\\/]/i.test(file);
+  const own = /[\\/]marlttsera[\\/]/i.test(file);
   if (text && GEO_RE.test(text) && !own) {
     const mode = PROSE_EXT.has(extname(file).toLowerCase()) ? 'prose' : 'code';
     // კორექტურის შენიშვნებში არასწორი ფორმა განზრახ არის ციტირებული („იყო → გახდა“, ✗) — ასეთ სტრიქონებს ვტოვებთ
@@ -30,8 +30,8 @@ try {
       const shown = findings.slice(0, MAX_FINDINGS).map((f) => `- [${f.level}] ${f.rule}: „${f.match}“ — ${f.message}${f.suggestion ? ` → ${f.suggestion}` : ''}`);
       const more = findings.length > MAX_FINDINGS ? `\n(+ ${findings.length - MAX_FINDINGS} more; run the skill's scripts/lint.mjs on the file for the full list)` : '';
       const additionalContext =
-        `martltsera lint flagged the Georgian text just written to ${file || 'the file'}:\n${shown.join('\n')}${more}\n` +
-        'Review each one in context against the martltsera skill (load it if it is not loaded) and fix the real errors; a flag can be a false positive, so do not change text blindly.';
+        `marlttsera lint flagged the Georgian text just written to ${file || 'the file'}:\n${shown.join('\n')}${more}\n` +
+        'Review each one in context against the marlttsera skill (load it if it is not loaded) and fix the real errors; a flag can be a false positive, so do not change text blindly.';
       process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: 'PostToolUse', additionalContext } }));
     }
   }

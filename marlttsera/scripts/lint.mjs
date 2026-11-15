@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// martltsera lint — ქართული ტექსტის მექანიკური შემმოწმებელი.
+// marlttsera lint — ქართული ტექსტის მექანიკური შემმოწმებელი.
 // იჭერს მხოლოდ იმას, რისი დაჭერაც წესით/სიით შეიძლება (აკრძალული ფორმები, ტიპოგრაფიკა,
 // შერეული დამწერლობა, აშკარა პუნქტუაცია). გრამატიკასა და სტილს მოდელი თავად ამოწმებს.
 //
@@ -189,7 +189,7 @@ function main() {
     for (const f of lintText(inp.text, inp.mode, lex)) if (LEVELS[f.level] >= min) report.push({ file: inp.name, ...f });
   }
   if (opt.json) console.log(JSON.stringify(report, null, 2));
-  else if (!report.length) console.log('martltsera lint: მექანიკური შეცდომა ვერ ვიპოვე (გრამატიკა და სტილი მაინც თავად გადაამოწმე).');
+  else if (!report.length) console.log('marlttsera lint: მექანიკური შეცდომა ვერ ვიპოვე (გრამატიკა და სტილი მაინც თავად გადაამოწმე).');
   else {
     for (const f of report) console.log(`${f.file}:${f.line}:${f.col} [${f.level}] ${f.rule}: „${f.match}“ — ${f.message}${f.suggestion ? ` → ${f.suggestion}` : ''}`);
     const n = (l) => report.filter((f) => f.level === l).length;

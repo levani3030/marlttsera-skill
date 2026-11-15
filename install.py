@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""martltsera — ქართული მართლწერის სკილის ინსტალატორი Claude Code-ისთვის.
+"""marlttsera — ქართული მართლწერის სკილის ინსტალატორი Claude Code-ისთვის.
 
     python install.py              სკილი + hook-ები + მითითება CLAUDE.md-ში
     python install.py --no-hooks   hook-ების გარეშე
     python install.py --uninstall  ყველაფრის წაშლა
 
 ხელახლა გაშვება უსაფრთხოა: არაფერი ორმაგდება. settings.json-ის შეცვლამდე იქმნება
-სარეზერვო ასლი (settings.json.martltsera-backup). სკილის სკრიპტებს Node.js 18+ სჭირდება.
+სარეზერვო ასლი (settings.json.marlttsera-backup). სკილის სკრიპტებს Node.js 18+ სჭირდება.
 """
 
 import argparse
@@ -18,21 +18,21 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SRC = HERE / "martltsera"
+SRC = HERE / "marlttsera"
 CLAUDE = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude")
-DEST = CLAUDE / "skills" / "martltsera"
+DEST = CLAUDE / "skills" / "marlttsera"
 SETTINGS = CLAUDE / "settings.json"
 CLAUDE_MD = CLAUDE / "CLAUDE.md"
 
-MARK_START = "<!-- martltsera:start -->"
-MARK_END = "<!-- martltsera:end -->"
+MARK_START = "<!-- marlttsera:start -->"
+MARK_END = "<!-- marlttsera:end -->"
 MD_BLOCK = f"""{MARK_START}
-# martltsera (ქართული მართლწერა)
-- Before writing or editing ANY Georgian text (chat replies, file contents, UI strings, commit messages, comments, translations into Georgian), load the `martltsera` skill with the Skill tool and follow it, including its final self-check. Load it once per conversation and again after a context compaction. Trigger: Georgian script in the request or in the expected output, or `/martltsera`.
+# marlttsera (ქართული მართლწერა)
+- Before writing or editing ANY Georgian text (chat replies, file contents, UI strings, commit messages, comments, translations into Georgian), load the `marlttsera` skill with the Skill tool and follow it, including its final self-check. Load it once per conversation and again after a context compaction. Trigger: Georgian script in the request or in the expected output, or `/marlttsera`.
 - After writing Georgian text to a file, run the skill's `scripts/lint.mjs` on that file and fix the real errors it reports.
 {MARK_END}"""
 
-OUR_HOOK = re.compile(r"martltsera[\\/]scripts[\\/]hooks[\\/]")
+OUR_HOOK = re.compile(r"marlttsera[\\/]scripts[\\/]hooks[\\/]")
 
 
 def fwd(p: Path) -> str:
@@ -65,7 +65,7 @@ def update_settings(install_hooks: bool) -> None:
             settings = json.loads(raw) if raw.strip() else {}
         except json.JSONDecodeError as e:
             sys.exit(f"{SETTINGS} არასწორი JSON-ია ({e}); ფაილს არ შევეხე.")
-        shutil.copyfile(SETTINGS, SETTINGS.with_name("settings.json.martltsera-backup"))
+        shutil.copyfile(SETTINGS, SETTINGS.with_name("settings.json.marlttsera-backup"))
     strip_hooks(settings)
     if install_hooks:
         hooks = settings.setdefault("hooks", {})
@@ -120,7 +120,7 @@ def uninstall() -> None:
 def main() -> None:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    ap = argparse.ArgumentParser(description="martltsera სკილის ინსტალაცია Claude Code-ისთვის")
+    ap = argparse.ArgumentParser(description="marlttsera სკილის ინსტალაცია Claude Code-ისთვის")
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--uninstall", action="store_true", help="სკილის, hook-ებისა და CLAUDE.md-ის ჩანაწერის წაშლა")
     g.add_argument("--no-hooks", action="store_true", help="ინსტალაცია hook-ების გარეშე")
