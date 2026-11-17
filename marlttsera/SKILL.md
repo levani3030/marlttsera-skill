@@ -1,5 +1,6 @@
 ---
 name: marlttsera
+license: MIT
 description: >-
   მართლწერა — Georgian spelling, grammar, punctuation and style rules, built from the official norms of
   the Georgian literary language. Load this skill BEFORE writing or editing ANY Georgian text (ქართული

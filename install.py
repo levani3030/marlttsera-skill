@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """marlttsera — ქართული მართლწერის სკილის ინსტალატორი Claude Code-ისთვის.
+ავტორი: Levani3030 (Rostevan). ლიცენზია: MIT.
 
     python install.py              სკილი + hook-ები + მითითება CLAUDE.md-ში
     python install.py --no-hooks   hook-ების გარეშე

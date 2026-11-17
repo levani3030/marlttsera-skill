@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // marlttsera — ქართული მართლწერის სკილის ინსტალატორი Claude Code-ისთვის (Node.js ვერსია; იგივეა, რაც install.py).
+// ავტორი: Levani3030 (Rostevan). ლიცენზია: MIT.
 //   node install.mjs              — სკილი + hook-ები + მითითება CLAUDE.md-ში
 //   node install.mjs --no-hooks   — hook-ების გარეშე
 //   node install.mjs --uninstall  — ყველაფრის წაშლა
